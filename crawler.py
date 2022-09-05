@@ -22,7 +22,7 @@ HELPMSG = ("----------------- Usage ----------------\n"
 def print_help(warning=False):
     if warning:
         print "---------------- Warning ---------------"
-        print "Arguments unrecoginized, plz check usage"
+        print "Arguments unrecognised, plz check usage"
     else:
         print "----------------------------------------"
         print "Welcome to this web crawler coded by Kai"

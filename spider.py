@@ -11,13 +11,13 @@ from helper import clean, get_domain, valid, contain_static
 
 class HTMLParser(HTMLParser):
     '''
-    HTML parser to fetch urls and show assests
+    HTML parser to fetch urls and show assets
     '''
 
     def handle_starttag(self, tag, attrs):
         '''
-        Overrid of the default function to handle <a> and ??? tags
-        TODO: update this comments when assest handle is done
+        Override of the default function to handle <a> and ??? tags
+        TODO: update these comments when assets handling is done
         '''
         for key, val in attrs:
             if key == "href":
@@ -59,7 +59,7 @@ class HTMLParser(HTMLParser):
 class Spider(object):
     def __init__(self):
         self.to_visit = []
-        self.visted = set([])
+        self.visited = set([])
         self.parser = HTMLParser()
 
     def crawl(self, target_url):
@@ -70,12 +70,12 @@ class Spider(object):
             url = self.to_visit.pop(0)      # get next url
             print "The spider is visiting:", url
             urls = self.parser.run(url)     # parse the url
-            self.visted.add(url)            # add this visted url to visted list
+            self.visited.add(url)            # add this visited url to visited list
 
-            # Add urls from the praser to to_visit lits
+            # Add urls from the parser to to_visit lits
             # When they are not visited or already in the to_vist list
             for url in urls:
-                if url not in self.visted and url not in self.to_visit:
+                if url not in self.visited and url not in self.to_visit:
                     self.to_visit.append(url)
 
         print "The spider has finished crawling the web at {url}".format(url=target_url)
